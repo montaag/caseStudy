@@ -42,7 +42,7 @@ class _DashboardState extends State<Dashboard> {
               alignment: Alignment.bottomCenter,
               children: [
                 filter(controller.text, state.dogList).isEmpty
-                    ? EmptyScreen()
+                    ? const EmptyScreen()
                     : Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: GridView.count(

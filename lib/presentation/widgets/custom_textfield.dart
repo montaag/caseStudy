@@ -49,7 +49,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 widget.controller.text == "" ? "Search" : widget.controller.text,
-                style: CustomTextStyle.body(context, color: Palette.hintTextColor),
+                style: CustomTextStyle.body(context,
+                    color: widget.controller.text == "Search" || widget.controller.text == "" ? Palette.hintTextColor : Palette.primaryTextColor),
               ),
             ),
           ),
