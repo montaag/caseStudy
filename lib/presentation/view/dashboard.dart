@@ -20,6 +20,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   TextEditingController controller = TextEditingController();
+  bool isVisible = true;
 
   List<DogModel> filter(String filterText, List<DogModel> list) {
     List<DogModel> filtered = [];
@@ -66,6 +67,9 @@ class _DashboardState extends State<Dashboard> {
                         onChanged: (value) {
                           setState(() {});
                         }),
+                    SizedBox(
+                      height: 20,
+                    ),
                     CustomBottomNavBar(),
                   ],
                 )

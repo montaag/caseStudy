@@ -1,166 +1,3 @@
-// import 'package:appnation_casestudy/config/themes/imports.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-
-// class CustomTextField extends StatefulWidget {
-//   final String? _initialValue;
-//   final String? _placeholder;
-//   final bool? _isEnabled;
-//   final bool? _autofocus;
-//   final Function(String value)? _onChanged;
-//   final Function(String value)? _onFieldSubmitted;
-//   final FormFieldValidator<String>? _validator;
-//   final List<TextInputFormatter>? _inputFormatters;
-//   final Iterable<String>? _autofillHints;
-//   final TextEditingController? _controller;
-//   final FocusNode? _focusNode;
-//   final TextInputType? _keyboardType;
-//   final TextInputAction? _textInputAction;
-//   final int? _maxLength;
-//   final int? _maxLines;
-//   final Widget? _prefix;
-//   final Widget? _suffix;
-//   final String? _hintText;
-//   final EdgeInsetsGeometry? _margin;
-//   final EdgeInsetsGeometry? _padding;
-//   final BorderRadiusGeometry? _borderRadius;
-//   final bool? _obsecureText;
-
-//   final bool? _isAligned;
-//   final bool? _showCursor;
-//   final bool? _readOnly;
-//   final Function()? _onTap;
-
-//   const CustomTextField({
-//     Key? key,
-//     Function(String value)? onChanged,
-//     Function(String value)? onFieldSubmitted,
-//     String? initialValue,
-//     String? placeholder,
-//     bool isEnabled = true,
-//     bool autofocus = false,
-//     FormFieldValidator<String>? validator,
-//     List<TextInputFormatter>? inputFormatters,
-//     Iterable<String>? autofillHints,
-//     TextEditingController? controller,
-//     FocusNode? focusNode,
-//     TextInputType keyboardType = TextInputType.name,
-//     TextInputAction textInputAction = TextInputAction.next,
-//     int? maxLength,
-//     int? maxLines,
-//     Widget? prefix,
-//     Widget? suffix,
-//     EdgeInsetsGeometry margin = const EdgeInsets.symmetric(vertical: 5.0),
-//     EdgeInsetsGeometry padding = EdgeInsets.zero,
-//     EdgeInsetsGeometry contentPadding = const EdgeInsets.fromLTRB(6, 6, 6, 6),
-//     BorderRadiusGeometry borderRadius = const BorderRadius.all(Radius.circular(8)),
-//     String? hintText,
-//     bool? obsecureText,
-//     bool? isAlinged,
-//     bool? showCursor,
-//     bool? readOnly,
-//     Function()? onTap,
-//   })  : _initialValue = initialValue,
-//         _placeholder = placeholder,
-//         _isEnabled = isEnabled,
-//         _autofocus = autofocus,
-//         _onChanged = onChanged,
-//         _onFieldSubmitted = onFieldSubmitted,
-//         _validator = validator,
-//         _prefix = prefix,
-//         _suffix = suffix,
-//         _inputFormatters = inputFormatters,
-//         _autofillHints = autofillHints,
-//         _controller = controller,
-//         _focusNode = focusNode,
-//         _keyboardType = keyboardType,
-//         _textInputAction = textInputAction,
-//         _maxLength = maxLength,
-//         _maxLines = maxLines,
-//         _margin = margin,
-//         _padding = padding,
-//         _borderRadius = borderRadius,
-//         _hintText = hintText,
-//         _obsecureText = obsecureText,
-//         _isAligned = isAlinged,
-//         _showCursor = showCursor,
-//         _readOnly = readOnly,
-//         _onTap = onTap,
-//         assert(onChanged != null || controller != null),
-//         super(key: key);
-
-//   @override
-//   _CustomTextFieldState createState() => _CustomTextFieldState();
-// }
-
-// class _CustomTextFieldState extends State<CustomTextField> {
-//   bool hasError = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: widget._margin,
-//       padding: widget._padding!.add((widget._maxLength != null || hasError) ? const EdgeInsets.only(bottom: 12.0) : EdgeInsets.zero),
-//       decoration: BoxDecoration(borderRadius: widget._borderRadius, color: Colors.white, border: Border.all(color: Palette.grey)),
-//       child: TextFormField(
-//         onTap: widget._onTap,
-//         readOnly: widget._readOnly ?? false,
-//         showCursor: widget._showCursor,
-//         textAlign: widget._isAligned != null ? (widget._isAligned == true ? TextAlign.center : TextAlign.start) : TextAlign.start,
-//         obscureText: widget._obsecureText ?? false,
-//         controller: widget._controller,
-//         focusNode: widget._focusNode,
-//         initialValue: widget._initialValue,
-//         enabled: widget._isEnabled,
-//         onFieldSubmitted: widget._onFieldSubmitted,
-//         onChanged: (value) {
-//           if (widget._onChanged != null) {
-//             widget._onChanged!(value);
-//             if (widget._validator != null) {
-//               setState(() {
-//                 hasError = widget._validator!(value) != null;
-//               });
-//             }
-//           }
-//         },
-//         autofillHints: widget._autofillHints,
-//         autofocus: widget._autofocus!,
-//         validator: widget._validator,
-//         inputFormatters: widget._inputFormatters,
-//         keyboardType: widget._keyboardType,
-//         textInputAction: widget._textInputAction,
-//         maxLength: widget._maxLength,
-//         maxLines: widget._obsecureText == true ? 1 : widget._maxLines,
-//         autovalidateMode: AutovalidateMode.onUserInteraction,
-//         decoration: InputDecoration(
-//           hintText: widget._hintText ?? "",
-//           hintStyle: TextStyle(fontWeight: FontWeight.w600, color: Palette.hintTextColor, letterSpacing: 0.7),
-//           alignLabelWithHint: true,
-//           labelText: widget._placeholder,
-//           labelStyle: TextStyle(
-//             fontSize: 16,
-//             color: Palette.primaryColor,
-//           ),
-//           prefixIcon: widget._prefix == null
-//               ? null
-//               : Padding(
-//                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
-//                   child: widget._prefix,
-//                 ),
-//           suffixIcon: widget._suffix == null
-//               ? null
-//               : Padding(
-//                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
-//                   child: widget._suffix,
-//                 ),
-//           floatingLabelBehavior: FloatingLabelBehavior.never,
-//           border: OutlineInputBorder(borderSide: BorderSide.none),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:appnation_casestudy/config/themes/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -179,33 +16,28 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
       child: InkWell(
         onTap: () {
           showModalBottomSheet(
-              context: context,
-              elevation: 0,
-              showDragHandle: true,
-              isScrollControlled: true,
-              useSafeArea: false,
-              builder: (context) => Padding(
-                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Container(
-                      decoration:
-                          const BoxDecoration(borderRadius: BorderRadius.only(topLeft: const Radius.circular(25.0), topRight: const Radius.circular(25.0))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: TextField(
-                          controller: widget.controller,
-                          onChanged: widget.onChanged,
-                          autofocus: true,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(borderSide: BorderSide.none),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ));
+            context: context,
+            barrierColor: Colors.transparent,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(color: Palette.grey, width: 2),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20.0),
+              ),
+            ),
+            backgroundColor: Colors.white,
+            isScrollControlled: true,
+            showDragHandle: true,
+            useSafeArea: false,
+            builder: (context) => MyDraggableSheet(
+              controller: widget.controller,
+              onChanged: widget.onChanged,
+            ),
+          );
         },
         child: Container(
           height: 64,
@@ -227,17 +59,110 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   }
 }
 
-class FilterTextContainer extends StatelessWidget {
+class MyDraggableSheet extends StatefulWidget {
   final TextEditingController controller;
-  const FilterTextContainer({super.key, required this.controller});
+  final Function(String value) onChanged;
+  const MyDraggableSheet({super.key, required this.controller, required this.onChanged});
+
+  @override
+  State<MyDraggableSheet> createState() => _MyDraggableSheetState();
+}
+
+class _MyDraggableSheetState extends State<MyDraggableSheet> {
+  final _sheet = GlobalKey();
+  final _controller = DraggableScrollableController();
+
+  DraggableScrollableSheet get sheet => (_sheet.currentWidget as DraggableScrollableSheet);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_onChanged);
+  }
+
+  void _onChanged() {
+    final currentSize = _controller.size;
+    if (currentSize <= 0.5) _collapse();
+  }
+
+  void _collapse() => _animateSheet(sheet.snapSizes!.first);
+
+  void _anchor() => _animateSheet(sheet.snapSizes!.last);
+
+  void _expand() => _animateSheet(sheet.maxChildSize);
+
+  void _hide() => _animateSheet(sheet.minChildSize);
+
+  void _animateSheet(double size) {
+    _controller.animateTo(
+      size,
+      duration: const Duration(milliseconds: 50),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        border: OutlineInputBorder(borderSide: BorderSide.none),
+    return LayoutBuilder(
+      builder: (context, constraints) => DraggableScrollableSheet(
+        key: _sheet,
+        initialChildSize: 0.5,
+        maxChildSize: 1,
+        minChildSize: 0,
+        expand: false,
+        snap: true,
+        snapSizes: [
+          //  60 / constraints.maxHeight,
+          0.5,
+        ],
+        controller: _controller,
+        builder: (BuildContext context, ScrollController scrollController) {
+          return Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              ),
+            ),
+            child: CustomScrollView(
+              controller: scrollController,
+              slivers: [
+                SliverList.list(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8, bottom: 30),
+                          child: TextField(
+                            controller: widget.controller,
+                            onChanged: widget.onChanged,
+                            autofocus: true,
+                            decoration: const InputDecoration(border: OutlineInputBorder(borderSide: BorderSide.none), hintText: "Search"),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
