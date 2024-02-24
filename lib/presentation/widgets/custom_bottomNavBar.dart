@@ -4,16 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class TrapezoidWidget extends StatelessWidget {
+class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: CustomPaint(
         painter: TrapezoidPainter(),
-        child: Container(
+        child: SizedBox(
             height: kBottomNavigationBarHeight * 1.8,
-            // You can place your content inside the container if needed
             child: Row(
               children: [
                 Expanded(
@@ -71,14 +70,14 @@ class TrapezoidPainter extends CustomPainter {
       ..color = Palette.bottomNavbarColor
       ..style = PaintingStyle.fill;
 
-    final double topWidth = size.width * 0.96;
+    final double topWidth = size.width * 0.94;
     final double bottomWidth = size.width;
 
     final Path path = Path()
       ..moveTo(0.0, size.height * 2) // bottom-left
       ..lineTo(bottomWidth, size.height * 2) // bottom-right
       ..lineTo(topWidth, 0.0) // top-right
-      ..lineTo(size.width * 0.04, 0.0) // top-left
+      ..lineTo(size.width * 0.06, 0.0) // top-left
       ..close();
 
     canvas.drawPath(path, paint);

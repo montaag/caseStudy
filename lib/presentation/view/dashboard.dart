@@ -4,6 +4,7 @@ import 'package:appnation_casestudy/domain/models/dog_model.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_bottomNavBar.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_card.dart';
+import 'package:appnation_casestudy/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +17,18 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  TextEditingController controller = TextEditingController();
+
+  List<DogModel> filter(String filterText, List<DogModel> list) {
+    List<DogModel> filtered = [];
+    for (var element in list) {
+      if (element.breed.toLowerCase().contains(filterText.toLowerCase())) {
+        filtered.add(element);
+      }
+    }
+    return filtered;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
                     childAspectRatio: 1,
-                    children: state.dogList
+                    children: filter(controller.text, state.dogList)
                         .map((e) => CustomCard(
                               dog: e,
                               cachedImage: widget.cachedImages[state.dogList.indexOf(e)],
@@ -42,11 +55,25 @@ class _DashboardState extends State<Dashboard> {
                         .toList(),
                   ),
                 ),
-                TrapezoidWidget()
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
+                      child: CustomTextField(
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                        controller: controller,
+                        hintText: "Search",
+                      ),
+                    ),
+                    CustomBottomNavBar(),
+                  ],
+                )
               ],
             );
           },
         ));
-    ;
   }
 }

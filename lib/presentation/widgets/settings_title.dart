@@ -38,12 +38,12 @@ class SettingsTile extends StatelessWidget {
               item.OS == null
                   ? Icon(
                       Icons.call_made,
-                      color: Palette.hintTextColor,
+                      color: Palette.lightGray,
                       size: 18,
                     )
                   : Text(
                       item.OS!,
-                      style: CustomTextStyle.body(context, color: Palette.hintTextColor),
+                      style: CustomTextStyle.body(context, color: Palette.lightGray),
                     )
             ],
           ),
