@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:appnation_casestudy/config/themes/imports.dart';
 import 'package:appnation_casestudy/domain/models/dog_model.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_bottomNavBar.dart';
@@ -7,6 +8,7 @@ import 'package:appnation_casestudy/presentation/widgets/custom_card.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 class Dashboard extends StatefulWidget {
   final List<Image> cachedImages;
@@ -32,6 +34,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text("AppName"),
         ),
@@ -58,16 +61,11 @@ class _DashboardState extends State<Dashboard> {
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
-                      child: CustomTextField(
+                    CustomTextFormField(
+                        controller: controller,
                         onChanged: (value) {
                           setState(() {});
-                        },
-                        controller: controller,
-                        hintText: "Search",
-                      ),
-                    ),
+                        }),
                     CustomBottomNavBar(),
                   ],
                 )
