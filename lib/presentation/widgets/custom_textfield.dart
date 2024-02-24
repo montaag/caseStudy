@@ -118,7 +118,6 @@ class _MyDraggableSheetState extends State<MyDraggableSheet> {
         expand: false,
         snap: true,
         snapSizes: [
-          //  60 / constraints.maxHeight,
           0.5,
         ],
         controller: _controller,

@@ -30,7 +30,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 Container(
                   height: 25,
                   width: 2,
-                  color: Color(0xFFD1D1D6),
+                  color: const Color(0xFFD1D1D6),
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -41,7 +41,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         context: context,
                         isScrollControlled: true,
                         useSafeArea: false,
-                        builder: (context) => SettingsView(),
+                        builder: (context) => const SettingsView(),
                       );
                     },
                     child: Column(

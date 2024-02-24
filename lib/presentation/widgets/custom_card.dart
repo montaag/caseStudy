@@ -31,7 +31,7 @@ class _CustomCardState extends State<CustomCard> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.5), borderRadius: BorderRadius.only(topRight: Radius.circular(16), bottomLeft: Radius.circular(8))),
+                color: Colors.black.withOpacity(0.5), borderRadius: const BorderRadius.only(topRight: Radius.circular(16), bottomLeft: Radius.circular(8))),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
