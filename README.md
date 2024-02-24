@@ -1,16 +1,9 @@
-# appnation_casestudy
+# casestudy
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Error Handling -> Either kullanıldı
+TextformField animasyonları -> DraggableScrollableSheet ile yapıldı
+OS version yazdırma islemleri -> Method Channel kullanılarak yapıldı. Native kodlar AppDelegate.swift ve MainActivity.kt içinde bulunmaktadır.
+Splash bloc'u sadece resimlerin cache aldığı future'dan sorumludur sadece.
+Dog Bloc'u hem tüm breed listesini çekme hem de generate fonksiyonlarından sorumludur.
+BottomNavBar -> Painter ile çizildi, köşeleri smooth yapamadim :(
+Filter işlemi Dashboard'da yapılıyor
