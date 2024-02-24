@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:appnation_casestudy/config/themes/imports.dart';
 import 'package:appnation_casestudy/domain/models/dog_model.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_bottomNavBar.dart';
@@ -8,7 +5,6 @@ import 'package:appnation_casestudy/presentation/widgets/custom_card.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
 
 class Dashboard extends StatefulWidget {
   final List<Image> cachedImages;
@@ -37,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text("AppName"),
+          title: const Text("\$AppName"),
         ),
         body: BlocBuilder<DogBloc, DogState>(
           builder: (context, state) {
@@ -67,7 +63,7 @@ class _DashboardState extends State<Dashboard> {
                         onChanged: (value) {
                           setState(() {});
                         }),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomBottomNavBar(),

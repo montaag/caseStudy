@@ -3,8 +3,6 @@ import 'package:appnation_casestudy/config/themes/imports.dart';
 import 'package:appnation_casestudy/data/repositories/dog_repo.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
 import 'package:appnation_casestudy/presentation/bloc/splash_bloc/splash_bloc.dart';
-import 'package:appnation_casestudy/presentation/view/homePage.dart';
-import 'package:appnation_casestudy/presentation/view/settings.dart';
 import 'package:appnation_casestudy/presentation/view/splashScreen.dart';
 import 'package:appnation_casestudy/simple_bloc_pbserver.dart';
 import 'package:bloc/bloc.dart';

@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:appnation_casestudy/domain/models/errors.dart';
-import 'package:either_dart/either.dart';
 import 'package:http/http.dart' as http;
 
 class DogService {

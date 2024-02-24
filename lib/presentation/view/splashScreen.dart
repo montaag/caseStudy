@@ -1,12 +1,6 @@
-import 'dart:async';
-import 'dart:developer';
-
-import 'package:appnation_casestudy/domain/models/dog_model.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
 import 'package:appnation_casestudy/presentation/bloc/splash_bloc/splash_bloc.dart';
-import 'package:appnation_casestudy/presentation/view/dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +15,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<DogBloc>().add(FetchData());
   }

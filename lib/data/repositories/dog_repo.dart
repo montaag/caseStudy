@@ -1,8 +1,6 @@
 import 'package:appnation_casestudy/data/datasoruces/dog_service.dart';
 import 'package:appnation_casestudy/domain/models/dog_model.dart';
-import 'package:appnation_casestudy/domain/models/errors.dart';
 import 'package:appnation_casestudy/domain/repositories/dog_repo_abstract.dart';
-import 'package:either_dart/either.dart';
 
 class DogRepo extends IDogRepo {
   final DogService dogService = DogService();

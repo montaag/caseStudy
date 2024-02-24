@@ -1,13 +1,10 @@
 import 'package:appnation_casestudy/presentation/view/dashboard.dart';
-import 'package:appnation_casestudy/presentation/view/homePage.dart';
 import 'package:appnation_casestudy/presentation/view/splashScreen.dart';
 import 'package:flutter/material.dart';
 
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      //  case "/":
-      // return MaterialPageRoute(builder: (_) => HomePage());
       case "home":
         return MaterialPageRoute(
             builder: (_) => Dashboard(
