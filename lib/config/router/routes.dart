@@ -8,12 +8,12 @@ class CustomRouter {
     switch (settings.name) {
       //  case "/":
       // return MaterialPageRoute(builder: (_) => HomePage());
-      case "/home":
+      case "home":
         return MaterialPageRoute(
             builder: (_) => Dashboard(
                   cachedImages: settings.arguments as List<Image>,
                 ));
-      case "/splash":
+      case "splash":
         return MaterialPageRoute(builder: (_) => SplashScreen());
 
       default:

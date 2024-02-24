@@ -2,6 +2,7 @@ import 'package:appnation_casestudy/config/router/routes.dart';
 import 'package:appnation_casestudy/config/themes/imports.dart';
 import 'package:appnation_casestudy/data/repositories/dog_repo.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
+import 'package:appnation_casestudy/presentation/bloc/splash_bloc/splash_bloc.dart';
 import 'package:appnation_casestudy/presentation/view/homePage.dart';
 import 'package:appnation_casestudy/presentation/view/settings.dart';
 import 'package:appnation_casestudy/presentation/view/splashScreen.dart';
@@ -21,10 +22,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DogBloc(
-        repo: DogRepo(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => DogBloc(
+            repo: DogRepo(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => SplashBloc(context),
+        ),
+      ],
       child: BlocBuilder<DogBloc, DogState>(
         builder: (context, state) {
           return Sizer(
