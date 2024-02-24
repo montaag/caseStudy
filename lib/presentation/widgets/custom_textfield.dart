@@ -82,7 +82,7 @@ class _MyDraggableSheetState extends State<MyDraggableSheet> {
 
   void _onChanged() {
     final currentSize = _controller.size;
-    if (currentSize <= 0.5) _collapse();
+    if (currentSize <= 0.48) _collapse();
   }
 
   void _collapse() => _animateSheet(sheet.snapSizes!.first);
@@ -148,11 +148,15 @@ class _MyDraggableSheetState extends State<MyDraggableSheet> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8, right: 8, bottom: 30),
-                          child: TextField(
-                            controller: widget.controller,
-                            onChanged: widget.onChanged,
-                            autofocus: true,
-                            decoration: const InputDecoration(border: OutlineInputBorder(borderSide: BorderSide.none), hintText: "Search"),
+                          child: SizedBox(
+                            width: double.maxFinite,
+                            child: TextFormField(
+                              controller: widget.controller,
+                              onChanged: widget.onChanged,
+                              autofocus: true,
+                              maxLines: 99,
+                              decoration: const InputDecoration(border: OutlineInputBorder(borderSide: BorderSide.none), hintText: "Search"),
+                            ),
                           ),
                         ),
                       ),
