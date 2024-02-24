@@ -82,7 +82,7 @@ class _MyDraggableSheetState extends State<MyDraggableSheet> {
 
   void _onChanged() {
     final currentSize = _controller.size;
-    if (currentSize <= 0.48) _collapse();
+    if (currentSize <= 0.5) _collapse();
   }
 
   void _collapse() => _animateSheet(sheet.snapSizes!.first);

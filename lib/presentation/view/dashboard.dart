@@ -1,5 +1,6 @@
 import 'package:appnation_casestudy/domain/models/dog_model.dart';
 import 'package:appnation_casestudy/presentation/bloc/bloc/dog_bloc.dart';
+import 'package:appnation_casestudy/presentation/view/empty_screen.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_bottomNavBar.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_card.dart';
 import 'package:appnation_casestudy/presentation/widgets/custom_textfield.dart';
@@ -40,21 +41,23 @@ class _DashboardState extends State<Dashboard> {
             return Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 1,
-                    children: filter(controller.text, state.dogList)
-                        .map((e) => CustomCard(
-                              dog: e,
-                              cachedImage: widget.cachedImages[state.dogList.indexOf(e)],
-                            ))
-                        .toList(),
-                  ),
-                ),
+                filter(controller.text, state.dogList).isEmpty
+                    ? EmptyScreen()
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          childAspectRatio: 1,
+                          children: filter(controller.text, state.dogList)
+                              .map((e) => CustomCard(
+                                    dog: e,
+                                    cachedImage: widget.cachedImages[state.dogList.indexOf(e)],
+                                  ))
+                              .toList(),
+                        ),
+                      ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

@@ -1,6 +1,8 @@
 import 'package:appnation_casestudy/data/datasoruces/dog_service.dart';
 import 'package:appnation_casestudy/domain/models/dog_model.dart';
+import 'package:appnation_casestudy/domain/models/errors.dart';
 import 'package:appnation_casestudy/domain/repositories/dog_repo_abstract.dart';
+import 'package:either_dart/either.dart';
 
 class DogRepo extends IDogRepo {
   final DogService dogService = DogService();
@@ -11,7 +13,7 @@ class DogRepo extends IDogRepo {
   // }
 
   @override
-  Future<String> generateRandomImage(String breed) async {
+  Future<Either<CustomError, String>> generateRandomImage(String breed) async {
     return await dogService.generateRandomImage(breed);
   }
 
@@ -32,15 +34,20 @@ class DogRepo extends IDogRepo {
   // }
 
   @override
-  Future<List<DogModel>> getAllBreeds() async {
-    Map<String, List<String>> rawData = await dogService.getAllBreeds();
-    List<String> breeds = rawData.keys.toList();
-    //Paralel olarak resimler çekiliyor
-    final List responses = await Future.wait(List.generate(breeds.length, (index) => dogService.generateRandomImage(breeds[index])));
-    //Data modeli oluşturuluyor
-    List<DogModel> dogs =
-        List.generate(breeds.length, (index) => DogModel(breed: breeds[index], subreeds: rawData[breeds[index]] as List<String>, img: responses[index]));
+  Future<Either<CustomError, List<DogModel>>> getAllBreeds() async {
+    var result = await dogService.getAllBreeds();
 
-    return dogs;
+    if (result.isRight) {
+      Map<String, List<String>> rawData = result.right;
+      List<String> breeds = rawData.keys.toList();
+      final List responses =
+          await Future.wait(List.generate(breeds.length, (index) => dogService.generateRandomImage(breeds[index]).fold((left) => null, (right) => right)));
+      List<DogModel> dogs =
+          List.generate(breeds.length, (index) => DogModel(breed: breeds[index], subreeds: rawData[breeds[index]] as List<String>, img: responses[index]));
+
+      return Right(dogs);
+    } else {
+      return Left(result.left);
+    }
   }
 }

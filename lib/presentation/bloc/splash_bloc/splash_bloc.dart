@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +15,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       for (var element in cachedImage) {
         futures.add(precacheImage(element.image, context));
       }
-      log(futures.length.toString());
       await Future.wait(futures);
 
       emit(AppLoaded());
